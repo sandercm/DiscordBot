@@ -25,10 +25,14 @@ async def on_ready():
 @bot.command()
 async def mastery(user : str, champ : str):
     """"type username in 1 word gives mastery"""
-    user_id = euw.get_summoner(name=user).get('id')
-    champName = champ[0].upper() + champ[1:].lower()
-    champInfo = euw.static_get_champion_list().get('data').get(champName)
-    dictJson = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/" + str(user_id) + "/by-champion/" + str(champInfo.get('id')) + "?api_key=RGAPI-ff834936-b418-4711-8042-e81b804a8441")
+    try:
+        user_id = euw.get_summoner(name=user).get('id')
+        champName = champ[0].upper() + champ[1:].lower()
+        champInfo = euw.static_get_champion_list().get('data').get(champName)
+        dictJson = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/" + str(user_id) + "/by-champion/" + str(champInfo.get('id')) + "?api_key=RGAPI-ff834936-b418-4711-8042-e81b804a8441")
+    except:
+        bot.say("invalid username or champion")
+        return
     await bot.say(json.loads(dictJson.content.decode("utf-8")).get("championLevel"))
 
 
@@ -37,6 +41,21 @@ async def brent():
 
     await bot.say("Fuck " + "<@!231101437206069248>" + " .", tts=True)
 
+
+@bot.command()
+async def robin():
+
+    await bot.say("Fuck " + "<@!200915533942620160>" + " .", tts=True)
+
+
+@bot.command()
+async def barry():
+    await bot.say("Please ride me " + "<@!120252230560514051>" + " .", tts=True)
+
+@bot.command()
+async def kathy():
+
+    await bot.say("<@!270223269964021761>" + " still "+ str(random.randint(0,99)) + "% hardcore.", tts=True)
 
 @bot.command()
 async def sendNudes1():
