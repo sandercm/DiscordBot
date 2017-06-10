@@ -11,7 +11,8 @@ euw = RiotWatcher('RGAPI-ff834936-b418-4711-8042-e81b804a8441', default_region=E
 
 description = '''Me making a bot because I don't want to study normally.'''
 bot = commands.Bot(command_prefix='?', description=description)
-
+brent = bot.get_user_info("superscheire#2467")
+toetoet = bot.get_server("235869503521685504")
 
 @bot.event
 async def on_ready():
@@ -20,13 +21,21 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
+
 @bot.command()
 async def mastery(user : str, champ : str):
+    """"type username in 1 word gives mastery"""
     user_id = euw.get_summoner(name=user).get('id')
     champName = champ[0].upper() + champ[1:].lower()
     champInfo = euw.static_get_champion_list().get('data').get(champName)
     dictJson = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/" + str(user_id) + "/by-champion/" + str(champInfo.get('id')) + "?api_key=RGAPI-ff834936-b418-4711-8042-e81b804a8441")
     await bot.say(json.loads(dictJson.content.decode("utf-8")).get("championLevel"))
+
+
+@bot.command()
+async def brent():
+
+    await bot.say("Fuck " + "<@!231101437206069248>" + " .", tts=True)
 
 
 @bot.command()
