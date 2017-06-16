@@ -23,7 +23,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-
+#learning fucking pycharm
 
 @bot.command()
 async def vote(topic:str):
