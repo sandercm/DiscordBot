@@ -23,7 +23,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-#learning fucking pycharm
+
 
 @bot.command()
 async def vote(topic:str):
@@ -53,7 +53,7 @@ async def no():
 
 @bot.command()
 async def mastery(user: str, champ: str):
-    """"type username in 1 word gives mastery"""
+    """type username in 1 word gives mastery"""
     try:
         user_id = euw.get_summoner(name=user).get('id')
         champName = champ[0].upper() + champ[1:].lower()
