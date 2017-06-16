@@ -33,7 +33,7 @@ async def vote(topic:str):
     global forVal
     forVal = 0
     global againstVal
-    againstVal = 1
+    againstVal = 0
     await bot.say("type ?yes for or ?no against")
 
 
